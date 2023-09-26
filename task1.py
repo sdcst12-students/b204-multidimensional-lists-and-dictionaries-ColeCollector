@@ -35,10 +35,14 @@ table = [
     [5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,20,20,20,20,20],
 ]
 
+
 def target(lvl,ac):
-    return
+    print(table[ac][lvl-1])
+    return table[ac][lvl-1]
 
 def tests():
     assert target(5,7) == 12
     assert target(10,-10) == 20
     assert target(17,-3) == 13
+
+tests()
