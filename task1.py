@@ -37,7 +37,7 @@ table = [
 
 
 def target(lvl,ac):
-    print(table[ac][lvl-1])
+    print(table[20-ac][lvl-1])
     return table[ac][lvl-1]
 
 def tests():

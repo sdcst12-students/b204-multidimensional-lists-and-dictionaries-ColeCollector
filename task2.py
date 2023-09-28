@@ -23,28 +23,55 @@ for i in teams:
         'goalsFor' : 0,
         'goalsAgainst' : 0}
     
-print(teamData)
-for j in games:
-    for i in teamData:
-        if j['home'] == i:
-            print(j['homeScore'],i,j['awayScore'])
-
-
-
 
 for j in games:
     for i in teamData:
         if j['home'] == i:
+            j['homeScore'],i,j['awayScore']
+
+
+
+for j in games:
+    #home team
+    for i in teamData:
+        if j['home'] == i:
+            teamData[f"{i}"]['gamesPlayed'] += 1
+
+            teamData[f"{i}"]['goalsFor']+= j['homeScore']
+            teamData[f"{i}"]['goalsAgainst']+= j['awayScore']
+
+
             if j['awayScore']>j['homeScore']:
                 teamData[f"{i}"]['wins'] += 1
-                
+
             elif j['awayScore']<j['homeScore']:
+                teamData[f"{i}"]['losses'] += 1
+            
+            elif j['awayScore']==j['homeScore']:
+                teamData[f"{i}"]['ties'] += 1
 
 
-#for i in games:
-#    print(i)
-#    teamData['home']
-#    print(i['homeScore'])
+    #away team
+    for i in teamData:
+        if j['away'] == i:
+            teamData[f"{i}"]['gamesPlayed'] += 1
+            teamData[f"{i}"]['goalsFor']+= j['awayScore']
+            teamData[f"{i}"]['goalsAgainst']+= j['homeScore']
+
+
+            if j['awayScore']<j['homeScore']:
+                teamData[f"{i}"]['wins'] += 1
+
+            elif j['awayScore']>j['homeScore']:
+                teamData[f"{i}"]['losses'] += 1
+
+            elif j['awayScore']==j['homeScore']:
+                teamData[f"{i}"]['ties'] += 1
+            
+
+
+print(teamData)
+
 
 def tests():
     assert teamData['BC']['gamesPlayed'] == 12
